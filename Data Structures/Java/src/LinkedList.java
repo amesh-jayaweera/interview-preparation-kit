@@ -3,10 +3,20 @@ public class LinkedList<T> {
     private Node<T> head;
 
     public LinkedList() {
-        this.head = null;
+        head = null;
     }
 
-    public void add(T data) {
+    public void addFirst(T data) {
+        if(head == null) {
+            head = new Node<>(data);
+        } else {
+            Node<T> newNode = new Node<>(data);
+            newNode.setNext(head);
+            head = newNode;
+        }
+    }
+
+    public void addLast(T data) {
         if(head == null) {
             head = new Node<>(data);
         } else {
