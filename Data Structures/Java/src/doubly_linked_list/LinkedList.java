@@ -39,12 +39,55 @@ public class LinkedList<T> {
         size++;
     }
 
+    public void remove() {
+        if(!isEmpty()) {
+            if(size == 1) {
+                head = tail = null;
+            } else {
+                Node<T> newHead = head.getNext();
+                newHead.setPrev(null);
+                head = newHead;
+            }
+        }
+    }
+
+    public boolean remove(T data) {
+        Node<T> next = head;
+        int index = 0;
+        while (next != null) {
+            if(next.getData().equals(data)) {
+                if(index == 0)
+                    remove();
+                else{
+                    Node<T> prevNode = next.getPrev();
+                    Node<T> nextNode = next.getNext();
+                    prevNode.setNext(nextNode);
+                    nextNode.setPrev(prevNode);
+                }
+                return true;
+            }
+            next = next.getNext();
+            index++;
+        }
+        return false;
+    }
+
     public void print() {
         Node<T> next = head;
         while (next != null) {
             System.out.print(next.getData());
             System.out.print(" ");
             next = next.getNext();
+        }
+        System.out.print("\n");
+    }
+
+    public void printInReverse() {
+        Node<T> next = tail;
+        while (next != null) {
+            System.out.print(next.getData());
+            System.out.print(" ");
+            next = next.getPrev();
         }
         System.out.print("\n");
     }
