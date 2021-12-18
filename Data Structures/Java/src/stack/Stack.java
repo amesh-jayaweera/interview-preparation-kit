@@ -4,7 +4,7 @@ import doubly_linked_list.LinkedList;
 
 public class Stack<T> extends LinkedList<T> {
 
-    private LinkedList<T> list;
+    private final LinkedList<T> list;
 
     public Stack() {
         list = new LinkedList<>();

@@ -4,7 +4,7 @@ import doubly_linked_list.LinkedList;
 
 public class Queue<T> extends LinkedList<T> {
 
-    private LinkedList<T> list;
+    private final LinkedList<T> list;
 
     public Queue() {
         this.list = new LinkedList<>();
