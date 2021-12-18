@@ -1,3 +1,5 @@
+package linked_list;
+
 public class Node<T> {
 
     private final T data;
