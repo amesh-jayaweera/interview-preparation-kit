@@ -39,8 +39,28 @@ public class LinkedList<T> {
         size++;
     }
 
-    public void remove() {
+    public T removeLast() {
+        T data;
         if(!isEmpty()) {
+            data = tail.getData();
+            if(size == 1) {
+                head = tail = null;
+            } else {
+                Node<T> newTail = tail.getPrev();
+                newTail.setNext(null);
+                tail = newTail;
+            }
+            size--;
+        } else {
+            throw new RuntimeException("LinkedList is empty");
+        }
+        return data;
+    }
+
+    public T remove() {
+        T data;
+        if(!isEmpty()) {
+            data = head.getData();
             if(size == 1) {
                 head = tail = null;
             } else {
@@ -48,7 +68,11 @@ public class LinkedList<T> {
                 newHead.setPrev(null);
                 head = newHead;
             }
+            size--;
+        } else {
+            throw new RuntimeException("LinkedList is empty");
         }
+        return data;
     }
 
     public boolean remove(T data) {
@@ -64,6 +88,7 @@ public class LinkedList<T> {
                     prevNode.setNext(nextNode);
                     nextNode.setPrev(prevNode);
                 }
+                size--;
                 return true;
             }
             next = next.getNext();
@@ -97,6 +122,6 @@ public class LinkedList<T> {
     }
 
     public int size() {
-        return size;
+        return this.size;
     }
 }
